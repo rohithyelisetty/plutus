@@ -4,6 +4,7 @@ import Brand from "./components/brand"
 import { useUserContext } from "./userContext";
 
 function App() {
+<<<<<<< HEAD
   const { user, loading, error } = useUserContext();
   
   const nametype = user.displayName;
@@ -18,6 +19,9 @@ function App() {
     }
     return <Auth />
   }
+=======
+  const { user, loading, error } = useUserContext()
+>>>>>>> 2912e0b9eb91e573445180bb6b338b96f795cbb4
 
   return (
     <div className="App">
@@ -27,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
