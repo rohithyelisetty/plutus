@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button } from '@mui/material';
-import Todo from './components/Todo';
-import { db } from './firebase.js';
+import Todo from './Todo';
+import { db } from '../fire';
 import { collection, query, orderBy, onSnapshot, addDoc, serverTimestamp } from 'firebase/firestore';
-import './Brand.css';
-
-const brandName = "Nike";
-var pollNum = 0;
+import { useUserContext } from "../userContext";
+import './brand.css';
 
 const q = query(collection(db, 'todos'), orderBy('timestamp', 'desc'));
 function Brand() {
+    const { user, logoutUser } = useUserContext();
+    const nametype = user.displayName;
+    const brandName = nametype.split(';');
     const [todos, setTodos] = useState([]);
     const [input, setInput] = useState('');
     useEffect(() => {
@@ -27,10 +28,9 @@ function Brand() {
             timestamp: serverTimestamp()
         })
         setInput('')
-        ++ pollNum;
     };
     return (
-        <div className="App">
+        <div className="Brand">
             <h2> Hello { brandName }</h2>
             <form>
                 <TextField id="outlined-basic" label="Enter Poll Question (Y/N)" variant="outlined" style={{ margin: "0px 5px" }} size="small" value={input}
@@ -40,6 +40,7 @@ function Brand() {
             <ul>
                 {todos.map(item => <Todo key={item.id} arr={item} />)}
             </ul>
+            <button onClick={logoutUser}>Log out</button>
         </div>
     );
 }

@@ -1,14 +1,11 @@
-import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button } from '@mui/material';
-import { db } from '../firebase.js';
+import { db } from '../fire.js';
 import "./todo.css";
 import { doc, deleteDoc } from "firebase/firestore";
 import Modal from 'react-bootstrap/Modal'
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 
 const Todo = ({ arr }) => {
     return (
