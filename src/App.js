@@ -3,7 +3,7 @@ import Dashboard from "./components/dashboard";
 import { useUserContext } from "./userContext";
 
 function App() {
-  const { user, loading, error } = useUserContext();
+  const { user, loading, error } = useUserContext()
 
   return (
     <div className="App">
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
